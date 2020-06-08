@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "centbox", primary: true do |conf|
     conf.vm.box = "bento/centos-7"
     conf.vm.box_version = "202005.21.0"
+    conf.vm.hostname = "Cent7Box"
     conf.vm.network "private_network", ip: vm_conf["ip"]
 
     conf.vm.provider "virtualbox" do |v|
@@ -27,5 +28,10 @@ Vagrant.configure("2") do |config|
       v.memory = vm_conf["memory"]
       v.cpus = vm_conf["cpus"]
     end
+
+    # configure vagrant synced directory
+    conf.vm.synced_folder ".",
+      "/vagrant",
+      mount_options: ["dmode=775", "fmode=664"]
   end
 end
