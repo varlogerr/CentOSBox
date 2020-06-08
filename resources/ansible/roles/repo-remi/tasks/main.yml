@@ -1,12 +1,12 @@
 ---
-- name: install remi repo
-  yum:
-    name: http://rpms.famillecollet.com/enterprise/remi-release-{{ ansible_distribution_major_version }}.rpm
-    state: present
-  become: yes
+- block:
+  - name: install remi repo
+    yum:
+      name: http://rpms.famillecollet.com/enterprise/remi-release-{{ ansible_distribution_major_version }}.rpm
+      state: present
 
-- name: import remi GPG key
-  rpm_key:
-    key: http://rpms.remirepo.net/RPM-GPG-KEY-remi
-    state: present
+  - name: import remi GPG key
+    rpm_key:
+      key: http://rpms.remirepo.net/RPM-GPG-KEY-remi
+      state: present
   become: yes
