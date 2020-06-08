@@ -38,5 +38,10 @@ Vagrant.configure("2") do |config|
       yum install -y epel-release
       yum install -y ansible
     SHELL
+
+    conf.vm.provision "shell", privileged: true, inline: <<-SHELL
+      cd /vagrant/resources/ansible
+      ansible-playbook playbook.yml
+    SHELL
   end
 end
