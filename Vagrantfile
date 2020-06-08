@@ -4,6 +4,7 @@
 vm_conf = JSON.parse({
   memory: 1024,
   cpus: 1,
+  ip: "192.168.96.69",
 }.to_json)
 
 vm_conf_path = "#{ File.expand_path File.dirname(__FILE__) }/vagrant.json"
@@ -19,6 +20,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "centbox", primary: true do |conf|
     conf.vm.box = "bento/centos-7"
     conf.vm.box_version = "202005.21.0"
+    conf.vm.network "private_network", ip: vm_conf["ip"]
 
     conf.vm.provider "virtualbox" do |v|
       v.gui = false
