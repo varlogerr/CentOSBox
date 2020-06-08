@@ -32,6 +32,11 @@ Vagrant.configure("2") do |config|
     # configure vagrant synced directory
     conf.vm.synced_folder ".",
       "/vagrant",
-      mount_options: ["dmode=775", "fmode=664"]
+      mount_options: ["dmode=0775", "fmode=0664"]
+
+    conf.vm.provision "shell", privileged: true, inline: <<-SHELL
+      yum install -y epel-release
+      yum install -y ansible
+    SHELL
   end
 end
