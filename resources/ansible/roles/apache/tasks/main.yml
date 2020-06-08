@@ -1,0 +1,12 @@
+---
+- name: install apache and mod_ssl
+  yum: name="{{ packages }}" state=present
+  vars:
+    packages:
+      - httpd
+      - mod_ssl
+  become: yes
+
+- name: start apache
+  service: name=httpd state=started enabled=yes
+  become: yes
