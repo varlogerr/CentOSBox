@@ -6,6 +6,9 @@
   copy: src=initdb dest="{{ mariadb_service_conf_dir }}"
 
 - block:
+  - name: create mariadb volume
+    docker_volume: name="{{ mariadb_volume_name }}" state=present
+
   - name: start mariadb container
     docker_container:
       name: mariadb
@@ -14,6 +17,7 @@
         MYSQL_ROOT_PASSWORD: "{{ mariadb_root_pass | string }}"
       volumes:
         - "{{ mariadb_service_conf_dir }}/initdb:/docker-entrypoint-initdb.d"
+        - "{{ mariadb_volume_name }}:/var/lib/mysql"
       ports:
       - "{{ mariadb_host_port }}:3306"
       comparisons:
