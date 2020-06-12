@@ -1,0 +1,2 @@
+---
+bash_source_dir_path: "{{ ansible_env.HOME }}/.bash-source"

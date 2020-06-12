@@ -4,10 +4,13 @@
     provision_extras: "{{ ansible_env.PROVISION_EXTRAS | bool }}"
   roles:
     - role: apache
+    - role: docker
     - role: mariadb
     - role: php
     - role: redis
     - role: bash-completion
+      when: provision_extras
+    - role: bash-source-dir
       when: provision_extras
     - role: git
       when: provision_extras
