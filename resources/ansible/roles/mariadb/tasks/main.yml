@@ -7,7 +7,7 @@
       env:
         MYSQL_ROOT_PASSWORD: "{{ mariadb_root_pass | string }}"
       volumes:
-        - /vagrant/resources/ansible/roles/mariadb/files/initdb:/docker-entrypoint-initdb.d
+        - "{{ role_path }}/files/initdb:/docker-entrypoint-initdb.d"
       ports:
       - "{{ mariadb_host_port }}:3306"
       comparisons:
