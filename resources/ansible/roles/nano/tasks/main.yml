@@ -1,0 +1,4 @@
+---
+- name: install nano
+  snap: name=nano state=present
+  become: yes

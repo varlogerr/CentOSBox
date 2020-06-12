@@ -4,8 +4,20 @@
     provision_extras: "{{ ansible_env.PROVISION_EXTRAS | bool }}"
   roles:
     - role: apache
-    - role: php
     - role: mariadb
+    - role: php
     - role: redis
+    - role: bash-completion
+      when: provision_extras
+    - role: git
+      when: provision_extras
     - role: htop
+      when: provision_extras
+    - role: jq
+      when: provision_extras
+    - role: nano
+      when: provision_extras
+    - role: tree
+      when: provision_extras
+    - role: vim
       when: provision_extras

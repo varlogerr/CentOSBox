@@ -1,0 +1,4 @@
+---
+- name: install tree
+  snap: name=tree state=present
+  become: yes

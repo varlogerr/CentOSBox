@@ -1,0 +1,4 @@
+---
+- name: install jq
+  snap: name=jq state=present
+  become: yes

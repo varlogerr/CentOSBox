@@ -1,0 +1,10 @@
+---
+- block:
+  - name: install wandisco repo
+    yum:
+      name: http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
+      state: present
+
+  - name: install git
+    yum: name=git state=present
+  become: yes

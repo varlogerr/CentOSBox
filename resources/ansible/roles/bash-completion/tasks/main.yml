@@ -1,0 +1,4 @@
+---
+- name: install bash-completion
+  yum: name=bash-completion state=present
+  become: yes
