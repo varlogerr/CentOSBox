@@ -18,5 +18,5 @@
     service: name=docker state=started enabled=yes
 
   - name: add user to docker group
-    user: name="{{ ansible_user }}" groups=docker append=yes
+    user: name="{{ ansible_env.LOGNAME }}" groups=docker append=yes
   become: yes

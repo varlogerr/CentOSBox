@@ -1,0 +1,2 @@
+---
+service_conf_dir_path: "{{ ansible_env.HOME }}/service-conf"

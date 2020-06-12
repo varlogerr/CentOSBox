@@ -2,3 +2,4 @@
 dependencies:
   - docker
   - python-docker
+  - service-conf-dir

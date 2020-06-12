@@ -1,0 +1,3 @@
+---
+- name: create services configuration directory
+  file: path="{{ service_conf_dir_path }}" state=directory

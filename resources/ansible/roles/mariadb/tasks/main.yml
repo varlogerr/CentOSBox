@@ -1,4 +1,10 @@
 ---
+- name: create service conf directory
+  file: path="{{ mariadb_service_conf_dir }}" state=directory
+
+- name: create service conf
+  copy: src=initdb dest="{{ mariadb_service_conf_dir }}"
+
 - block:
   - name: start mariadb container
     docker_container:
@@ -7,7 +13,7 @@
       env:
         MYSQL_ROOT_PASSWORD: "{{ mariadb_root_pass | string }}"
       volumes:
-        - "{{ role_path }}/files/initdb:/docker-entrypoint-initdb.d"
+        - "{{ mariadb_service_conf_dir }}/initdb:/docker-entrypoint-initdb.d"
       ports:
       - "{{ mariadb_host_port }}:3306"
       comparisons:
