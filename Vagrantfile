@@ -34,11 +34,7 @@ Vagrant.configure("2") do |config|
       "/vagrant",
       mount_options: ["dmode=0775", "fmode=0664"]
 
-    conf.vm.provision "shell", privileged: true, inline: <<-SHELL
-      yum install -y epel-release
-      yum install -y ansible
-    SHELL
-
+    conf.vm.provision "shell", privileged: true, path: "resources/scripts/ansible.sh"
     conf.vm.provision "shell", privileged: false, inline: <<-SHELL
       cd /vagrant/resources/ansible
       ansible-playbook playbook.yml
