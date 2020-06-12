@@ -1,0 +1,18 @@
+---
+- block:
+  - name: create volume
+    docker_volume: name="{{ redis_volume_name }}" state=present
+
+  - name: start container
+    docker_container:
+      name: redis
+      image: redis:6-alpine
+      volumes:
+        - "{{ redis_volume_name }}:/data"
+      ports:
+      - "{{ redis_host_port }}:6379"
+      comparisons:
+        image: strict
+        env: strict
+        volumes: allow_more_present
+  become: yes

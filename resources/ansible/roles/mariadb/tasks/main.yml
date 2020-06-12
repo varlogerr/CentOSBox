@@ -6,10 +6,10 @@
   copy: src=initdb dest="{{ mariadb_service_conf_dir }}"
 
 - block:
-  - name: create mariadb volume
+  - name: create volume
     docker_volume: name="{{ mariadb_volume_name }}" state=present
 
-  - name: start mariadb container
+  - name: start container
     docker_container:
       name: mariadb
       image: mariadb:10.4

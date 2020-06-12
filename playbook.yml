@@ -4,3 +4,4 @@
     - apache
     - php
     - mariadb
+    - redis

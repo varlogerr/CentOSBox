@@ -1,0 +1,4 @@
+---
+redis_host_port: 6379
+
+redis_volume_name: redis
