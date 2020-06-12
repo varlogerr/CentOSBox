@@ -1,0 +1,23 @@
+---
+- block:
+  - name: start mariadb container
+    docker_container:
+      name: mariadb
+      image: mariadb:10.4
+      env:
+        MYSQL_ROOT_PASSWORD: "{{ mariadb_root_pass | string }}"
+      volumes:
+        - /vagrant/resources/ansible/roles/mariadb/files/initdb:/docker-entrypoint-initdb.d
+      ports:
+      - "{{ mariadb_host_port }}:3306"
+      comparisons:
+        image: strict
+        env: strict
+        volumes: allow_more_present
+
+  - name: install mariadb repo
+    copy: src=MariaDB.repo dest=/etc/yum.repos.d/MariaDB.repo
+
+  - name: install mariadb client
+    yum: name=MariaDB-client state=present
+  become: yes
