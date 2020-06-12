@@ -1,7 +1,11 @@
 ---
 - hosts: localhost
+  vars:
+    provision_extras: "{{ ansible_env.PROVISION_EXTRAS | bool }}"
   roles:
-    - apache
-    - php
-    - mariadb
-    - redis
+    - role: apache
+    - role: php
+    - role: mariadb
+    - role: redis
+    - role: htop
+      when: provision_extras

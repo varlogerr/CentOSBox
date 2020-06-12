@@ -1,0 +1,8 @@
+---
+- block:
+  - name: install snap
+    yum: name=snapd state=present
+
+  - name: start snapd socket
+    service: name=snapd.socket state=started enabled=yes
+  become: yes
