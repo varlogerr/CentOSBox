@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
 
     conf.vm.provision "shell", privileged: true, path: "resources/scripts/ansible.sh"
     conf.vm.provision "shell", privileged: false, inline: <<-SHELL
-      cd /vagrant/resources/ansible
+      cd /vagrant
       ansible-playbook playbook.yml
     SHELL
   end
