@@ -1,0 +1,28 @@
+---
+- name: install build dependencies
+  yum: name="{{ packages }}" state=present
+  vars:
+    packages:
+    - "@Development tools"
+    - ncurses-devel
+  become: yes
+
+- name: "install plugin"
+  command: "bash -lc 'asdf plugin-add tmux'"
+  args:
+    creates: "{{ asdf_dir }}/plugins/tmux"
+
+- name: "install tmux:{{ asdf_tmux_version }}"
+  command: "bash -lc 'asdf install tmux {{ asdf_tmux_version }}'"
+  args:
+    creates: "{{ asdf_dir }}/installs/tmux/{{ asdf_tmux_version }}"
+
+- name: "set tmux:{{ asdf_tmux_version }} as global"
+  command: "bash -lc 'asdf global tmux {{ asdf_tmux_version }}'"
+  changed_when: no
+
+- name: install tmux completion
+  get_url:
+    url: https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux
+    dest: "{{ bash_source_dir_path }}/tmux.sh"
+    mode: 0644

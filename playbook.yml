@@ -8,6 +8,10 @@
     - role: mariadb
     - role: php
     - role: redis
+    - role: asdf
+      when: provision_extras
+    - role: asdf-tmux
+      when: provision_extras
     - role: bash-completion
       when: provision_extras
     - role: bash-source-dir
