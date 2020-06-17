@@ -8,6 +8,7 @@
     - { role: php }
     - { role: redis }
     - { role: asdf, when: devtools }
+    - { role: asdf-direnv, when: devtools }
     - { role: asdf-tmux, when: devtools }
     - { role: bash-completion, when: devtools }
     - { role: bash-source-dir, when: devtools }

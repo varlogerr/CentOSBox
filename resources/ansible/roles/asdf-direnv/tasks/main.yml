@@ -1,0 +1,17 @@
+---
+- name: "install plugin"
+  command: "bash -lc 'asdf plugin-add direnv'"
+  args:
+    creates: "{{ asdf_dir }}/plugins/direnv"
+
+- name: "install direnv:{{ asdf_direnv_version }}"
+  command: "bash -lc 'asdf install direnv {{ asdf_direnv_version }}'"
+  args:
+    creates: "{{ asdf_dir }}/installs/direnv/{{ asdf_direnv_version }}"
+
+- name: "set direnv:{{ asdf_direnv_version }} global"
+  command: "bash -lc 'asdf global direnv {{ asdf_direnv_version }}'"
+  changed_when: no
+
+- name: hook direnv to bash
+  copy: src=direnv.sh dest="{{ bash_source_dir_path }}"

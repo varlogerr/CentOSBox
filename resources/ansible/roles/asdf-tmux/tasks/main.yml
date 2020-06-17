@@ -17,7 +17,7 @@
   args:
     creates: "{{ asdf_dir }}/installs/tmux/{{ asdf_tmux_version }}"
 
-- name: "set tmux:{{ asdf_tmux_version }} as global"
+- name: "set tmux:{{ asdf_tmux_version }} global"
   command: "bash -lc 'asdf global tmux {{ asdf_tmux_version }}'"
   changed_when: no
 

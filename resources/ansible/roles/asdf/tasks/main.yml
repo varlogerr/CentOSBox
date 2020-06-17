@@ -5,18 +5,5 @@
     dest: "{{ asdf_dir }}"
     version: "{{ asdf_version }}"
 
-- name: add asdf to profile
-  lineinfile:
-    dest: "{{ ansible_env.HOME }}/.bashrc"
-    create: yes
-    mode: 0644
-    line: ". {{ asdf_dir }}/asdf.sh"
-    insertafter: EOF
-
-- name: add asdf completions to bashrc
-  lineinfile:
-    dest: "{{ ansible_env.HOME }}/.bashrc"
-    create: yes
-    mode: 0644
-    line: ". {{ asdf_dir }}/completions/asdf.bash"
-    insertafter: EOF
+- name: add asdf to bashrc
+  template: src=asdf.sh dest="{{ bash_source_dir_path }}/000-asdf.sh"
