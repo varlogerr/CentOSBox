@@ -3,28 +3,18 @@
   vars:
     provision_extras: "{{ ansible_env.PROVISION_EXTRAS | bool }}"
   roles:
-    - role: apache
-    - role: docker
-    - role: mariadb
-    - role: php
-    - role: redis
-    - role: asdf
-      when: provision_extras
-    - role: asdf-tmux
-      when: provision_extras
-    - role: bash-completion
-      when: provision_extras
-    - role: bash-source-dir
-      when: provision_extras
-    - role: git
-      when: provision_extras
-    - role: htop
-      when: provision_extras
-    - role: jq
-      when: provision_extras
-    - role: nano
-      when: provision_extras
-    - role: tree
-      when: provision_extras
-    - role: vim
-      when: provision_extras
+    - { role: apache }
+    - { role: mariadb }
+    - { role: php }
+    - { role: redis }
+    - { role: asdf, when: provision_extras }
+    - { role: asdf-tmux, when: provision_extras }
+    - { role: bash-completion, when: provision_extras }
+    - { role: bash-source-dir, when: provision_extras }
+    - { role: docker, when: provision_extras }
+    - { role: git, when: provision_extras }
+    - { role: htop, when: provision_extras }
+    - { role: jq, when: provision_extras }
+    - { role: nano, when: provision_extras }
+    - { role: tree, when: provision_extras }
+    - { role: vim, when: provision_extras }
