@@ -5,7 +5,7 @@ vm_conf = JSON.parse({
   memory: 1024,
   cpus: 1,
   ip: "192.168.96.69",
-  extras: false,
+  devtools: false,
 }.to_json)
 
 vm_conf_path = "#{ File.expand_path File.dirname(__FILE__) }/vagrant.json"
@@ -36,9 +36,9 @@ Vagrant.configure("2") do |config|
       mount_options: ["dmode=0775", "fmode=0664"]
 
     conf.vm.provision "shell", privileged: true, path: "resources/ansible.sh"
-    conf.vm.provision "shell", privileged: false, args: ["#{ vm_conf["extras"] }"], inline: <<-SHELL
+    conf.vm.provision "shell", privileged: false, args: ["#{ vm_conf["devtools"] }"], inline: <<-SHELL
       cd /vagrant
-      PROVISION_EXTRAS=${1} ansible-playbook playbook.yml
+      DEVTOOLS=${1} ansible-playbook playbook.yml
     SHELL
   end
 end

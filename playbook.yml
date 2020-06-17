@@ -1,20 +1,20 @@
 ---
 - hosts: localhost
   vars:
-    provision_extras: "{{ ansible_env.PROVISION_EXTRAS | bool }}"
+    devtools: "{{ ansible_env.DEVTOOLS | bool }}"
   roles:
     - { role: apache }
     - { role: mariadb }
     - { role: php }
     - { role: redis }
-    - { role: asdf, when: provision_extras }
-    - { role: asdf-tmux, when: provision_extras }
-    - { role: bash-completion, when: provision_extras }
-    - { role: bash-source-dir, when: provision_extras }
-    - { role: docker, when: provision_extras }
-    - { role: git, when: provision_extras }
-    - { role: htop, when: provision_extras }
-    - { role: jq, when: provision_extras }
-    - { role: nano, when: provision_extras }
-    - { role: tree, when: provision_extras }
-    - { role: vim, when: provision_extras }
+    - { role: asdf, when: devtools }
+    - { role: asdf-tmux, when: devtools }
+    - { role: bash-completion, when: devtools }
+    - { role: bash-source-dir, when: devtools }
+    - { role: docker, when: devtools }
+    - { role: git, when: devtools }
+    - { role: htop, when: devtools }
+    - { role: jq, when: devtools }
+    - { role: nano, when: devtools }
+    - { role: tree, when: devtools }
+    - { role: vim, when: devtools }
