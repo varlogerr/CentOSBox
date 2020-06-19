@@ -30,4 +30,7 @@
 
   - name: install mariadb client
     yum: name=MariaDB-client state=present
+
+  - name: configure mysql connection protocol
+    copy: src=mysql-protocol.cnf dest=/etc/my.cnf.d
   become: yes
