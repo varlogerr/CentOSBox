@@ -26,5 +26,36 @@
       url: https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux
       dest: "{{ tmux_completion_dir }}/tmux.sh"
       mode: 0644
+
+  - name: create global configs
+    copy: src=tmux.conf.configs dest="{{ tmux_global_confdir }}"
+
+  - name: load global configs to tmux.conf
+    lineinfile:
+      path: "{{ tmux_global_confdir }}/tmux.conf"
+      line: source-file {{ tmux_global_confdir }}/{{ item }}
+      create: yes
+    with_items:
+      - tmux.conf.configs
   become: yes
   become_user: root
+
+- name: install plugin manager
+  git:
+    repo: "{{ tmux_tpm_repo_url }}"
+    dest: "{{ tmux_tpm_install_dir }}"
+
+- name: create user plugins configs
+  template: src=tmux.conf.plugins dest="{{ tmux_user_confdir }}/.tmux.conf.plugins"
+
+- name: load user configs to tmux.conf
+  lineinfile:
+    path: "{{ tmux_user_confdir }}/.tmux.conf"
+    line: source-file {{ tmux_user_confdir }}/{{ item }}
+    create: yes
+  with_items:
+    - .tmux.conf.plugins
+
+- name: install plugins
+  command: "bash -lc '{{ tmux_tpm_install_dir }}/scripts/install_plugins.sh'"
+  changed_when: no

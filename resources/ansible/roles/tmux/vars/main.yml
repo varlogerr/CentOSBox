@@ -1,3 +1,9 @@
 ---
 tmux_bash_hook_dir: /etc/profile.d
 tmux_completion_dir: /etc/bash_completion.d
+tmux_global_confdir: /etc
+
+tmux_tpm_repo_url: https://github.com/tmux-plugins/tpm
+tmux_plugins_install_dir: "{{ ansible_user_dir }}/.tmux/plugins"
+tmux_tpm_install_dir: "{{ tmux_plugins_install_dir }}/tpm"
+tmux_user_confdir: "{{ ansible_user_dir }}"
