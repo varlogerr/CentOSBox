@@ -1,0 +1,16 @@
+---
+- block:
+  - name: "install plugin"
+    command: "bash -lc 'asdf plugin-add direnv'"
+    args:
+      creates: "{{ asdf_dir }}/plugins/direnv"
+
+  - name: "install direnv:{{ direnv_version }}"
+    command: "bash -lc 'asdf install direnv {{ direnv_version }}'"
+    args:
+      creates: "{{ asdf_dir }}/installs/direnv/{{ direnv_version }}"
+
+  - name: hook direnv to bash and set direnv:{{ direnv_version }} global
+    template: src=direnv.sh dest="{{ direnv_bash_hook_dir }}"
+  become: yes
+  become_user: root

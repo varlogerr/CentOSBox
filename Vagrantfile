@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
     conf.vm.provision "shell", privileged: true, path: "resources/ansible.sh"
     conf.vm.provision "shell", privileged: false, args: ["#{ vm_conf["devtools"] }"], inline: <<-SHELL
       cd /vagrant
-      DEVTOOLS=${1} ansible-playbook playbook.yml
+      PLAYBOOK_DEVTOOLS=${1} ansible-playbook playbook.yml
     SHELL
   end
 end

@@ -1,0 +1,3 @@
+---
+tmux_bash_hook_dir: /etc/profile.d
+tmux_completion_dir: /etc/bash_completion.d

@@ -1,4 +1,3 @@
 ---
 dependencies:
   - git
-  - bash-source-dir

@@ -1,22 +1,22 @@
 ---
 - hosts: localhost
   vars:
-    devtools: "{{ ansible_env.DEVTOOLS | bool }}"
+    devtools: "{{ ansible_env.PLAYBOOK_DEVTOOLS | bool }}"
   roles:
     - { role: apache }
     - { role: mariadb }
     - { role: php }
     - { role: redis }
     - { role: asdf, when: devtools }
-    - { role: asdf-direnv, when: devtools }
-    - { role: asdf-nodejs, when: devtools }
-    - { role: asdf-tmux, when: devtools }
     - { role: bash-completion, when: devtools }
     - { role: bash-source-dir, when: devtools }
+    - { role: direnv, when: devtools }
     - { role: docker, when: devtools }
     - { role: git, when: devtools }
     - { role: htop, when: devtools }
     - { role: jq, when: devtools }
     - { role: nano, when: devtools }
+    - { role: nodejs, when: devtools }
+    - { role: tmux, when: devtools }
     - { role: tree, when: devtools }
     - { role: vim, when: devtools }

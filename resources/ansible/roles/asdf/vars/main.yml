@@ -1,0 +1,4 @@
+---
+asdf_git_repo_url: https://github.com/asdf-vm/asdf.git
+asdf_dir: /opt/asdf
+asdf_bashrc_hook_dir: /etc/profile.d

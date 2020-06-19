@@ -1,9 +1,12 @@
 ---
-- name: checkout asdf
-  git:
-    repo: https://github.com/asdf-vm/asdf.git
-    dest: "{{ asdf_dir }}"
-    version: "{{ asdf_version }}"
+- block:
+  - name: checkout asdf
+    git:
+      repo: "{{ asdf_git_repo_url }}"
+      dest: "{{ asdf_dir }}"
+      version: "{{ asdf_version }}"
 
-- name: add asdf to bashrc
-  template: src=asdf.sh dest="{{ bash_source_dir_path }}/000-asdf.sh"
+  - name: add asdf to bashrc
+    template: src=asdf.sh dest="{{ asdf_bashrc_hook_dir }}/000-asdf.sh"
+  become: yes
+  become_user: root
