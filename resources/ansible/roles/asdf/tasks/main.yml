@@ -1,12 +1,12 @@
 ---
 - block:
-  - name: checkout asdf
+  - name: install
     git:
       repo: "{{ asdf_git_repo_url }}"
       dest: "{{ asdf_dir }}"
       version: "{{ asdf_version }}"
 
-  - name: add asdf to bashrc
+  - name: configure bashrc
     template: src=asdf.sh dest="{{ asdf_bashrc_hook_dir }}/000-asdf.sh"
   become: yes
   become_user: root

@@ -25,10 +25,10 @@
         env: strict
         volumes: allow_more_present
 
-  - name: install mariadb repo
+  - name: install repo
     copy: src=MariaDB.repo dest=/etc/yum.repos.d/MariaDB.repo
 
-  - name: install mariadb client
+  - name: install client
     yum: name=MariaDB-client state=present
 
   - name: configure mysql connection protocol

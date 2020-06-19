@@ -1,4 +1,4 @@
 ---
-- name: install bash-completion
+- name: install
   yum: name=bash-completion state=present
   become: yes

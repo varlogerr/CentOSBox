@@ -1,27 +1,31 @@
 ---
-- name: install build dependencies
-  yum: name="{{ packages }}" state=present
-  vars:
-    packages:
-    - "@Development tools"
-    - ncurses-devel
-  become: yes
-
 - block:
-  - name: "install plugin"
+  - name: install build dependencies
+    yum: name="{{ packages }}" state=present
+    vars:
+      packages:
+        - "@Development tools"
+
+  - name: install runtime dependencies
+    yum: name="{{ packages }}" state=present
+    vars:
+      packages:
+        - ncurses-devel
+
+  - name: install plugin
     command: "bash -lc 'asdf plugin-add tmux'"
     args:
       creates: "{{ asdf_dir }}/plugins/tmux"
 
-  - name: "install tmux:{{ tmux_version }}"
+  - name: install version {{ tmux_version }}
     command: "bash -lc 'asdf install tmux {{ tmux_version }}'"
     args:
       creates: "{{ asdf_dir }}/installs/tmux/{{ tmux_version }}"
 
-  - name: "set tmux:{{ tmux_version }} global"
+  - name: set version {{ tmux_version }} global
     template: src=tmux.sh dest="{{ tmux_bash_hook_dir }}"
 
-  - name: install tmux completion
+  - name: install completion
     get_url:
       url: https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux
       dest: "{{ tmux_completion_dir }}/tmux.sh"

@@ -1,4 +1,4 @@
 ---
-- name: install htop
+- name: install
   snap: name=htop state=present
   become: yes

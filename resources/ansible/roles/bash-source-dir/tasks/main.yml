@@ -5,7 +5,7 @@
 - name: create autosource script
   copy: src=.bashinit dest="{{ bash_source_dir_path }}"
 
-- name: create source autosource in bashrc
+- name: source autosource in bashrc
   lineinfile:
     path: "{{ ansible_env.HOME }}/.bashrc"
     state: present

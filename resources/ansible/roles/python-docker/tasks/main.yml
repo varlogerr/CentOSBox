@@ -1,4 +1,4 @@
 ---
-- name: install python-docker
+- name: install
   yum: name=python-docker-py state=present
   become: true

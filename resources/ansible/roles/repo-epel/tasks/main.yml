@@ -1,4 +1,4 @@
 ---
-- name: install epel
+- name: install
   yum: name=epel-release state=present
   become: yes

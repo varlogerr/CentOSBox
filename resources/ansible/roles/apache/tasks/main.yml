@@ -7,6 +7,6 @@
         - httpd
         - mod_ssl
 
-  - name: start apache
+  - name: start service
     service: name=httpd state=started enabled=yes
   become: yes

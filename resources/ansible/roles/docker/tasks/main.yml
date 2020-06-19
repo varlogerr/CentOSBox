@@ -1,12 +1,12 @@
 ---
 - block:
-  - name: download docker repo
+  - name: install repo
     get_url:
       url: https://download.docker.com/linux/centos/docker-ce.repo
       dest: /etc/yum.repos.d/docker.repo
       mode: '0644'
 
-  - name: install docker packages
+  - name: install
     yum: name="{{ packages }}" state=present
     vars:
       packages:
@@ -14,9 +14,9 @@
         - docker-ce-cli
         - containerd.io
 
-  - name: start and enable docker service
+  - name: start and enable service
     service: name=docker state=started enabled=yes
 
-  - name: add user to docker group
+  - name: add user to group
     user: name="{{ ansible_env.LOGNAME }}" groups=docker append=yes
   become: yes

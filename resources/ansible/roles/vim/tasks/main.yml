@@ -1,4 +1,4 @@
 ---
-- name: install vim
+- name: install
   yum: name=vim state=present
   become: yes
