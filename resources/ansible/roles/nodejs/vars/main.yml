@@ -1,2 +1,3 @@
 ---
 nodejs_bash_hook_dir: /etc/profile.d
+nodejs_npm_prefix: /opt/npm
