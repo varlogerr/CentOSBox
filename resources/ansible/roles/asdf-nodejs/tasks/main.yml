@@ -1,0 +1,21 @@
+---
+- name: install build dependencies
+  yum: name="{{ packages }}" state=present
+  vars:
+    packages:
+    - "@Development tools"
+  become: yes
+
+- name: "install plugin"
+  command: "bash -lc 'asdf plugin-add nodejs'"
+  args:
+    creates: "{{ asdf_dir }}/plugins/nodejs"
+
+- name: "install nodejs:{{ asdf_nodejs_version }}"
+  command: "bash -lc 'NODEJS_CHECK_SIGNATURES=no asdf install nodejs {{ asdf_nodejs_version }}'"
+  args:
+    creates: "{{ asdf_dir }}/installs/nodejs/{{ asdf_nodejs_version }}"
+
+- name: "set nodejs:{{ asdf_nodejs_version }} global"
+  command: "bash -lc 'asdf global nodejs {{ asdf_nodejs_version }}'"
+  changed_when: no
