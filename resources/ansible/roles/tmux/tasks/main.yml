@@ -1,16 +1,14 @@
 ---
 - block:
   - name: install build dependencies
-    yum: name="{{ packages }}" state=present
-    vars:
-      packages:
-        - "@Development tools"
+    yum: name="@Development tools" state=present
 
   - name: install runtime dependencies
     yum: name="{{ packages }}" state=present
     vars:
       packages:
         - ncurses-devel
+        - libevent
 
   - name: install plugin
     command: "bash -lc 'asdf plugin-add tmux'"
