@@ -1,0 +1,4 @@
+---
+docker_compose_bin_url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
+docker_compose_bash_completion_url: https://raw.githubusercontent.com/docker/compose/{{ docker_compose_version }}/contrib/completion/bash/docker-compose
+docker_compose_checksum_file: /tmp/docker-compose.sha256

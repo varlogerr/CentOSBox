@@ -12,6 +12,7 @@
     - { role: bash-source-dir, when: devtools }
     - { role: direnv, when: devtools }
     - { role: docker, when: devtools }
+    - { role: docker-compose, when: devtools }
     - { role: git, when: devtools }
     - { role: htop, when: devtools }
     - { role: jq, when: devtools }

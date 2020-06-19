@@ -1,0 +1,28 @@
+---
+- block:
+  - name: download checksum file
+    get_url:
+      url: "{{ docker_compose_bin_url }}.sha256"
+      force: yes
+      dest: "{{ docker_compose_checksum_file }}"
+    changed_when: no
+
+  - name: get checksum
+    shell: cat {{ docker_compose_checksum_file }} | cut -d' ' -f1
+    register: docker_compose_checksum
+    changed_when: no
+
+  - name: install version {{ docker_compose_version }}
+    get_url:
+      url: "{{ docker_compose_bin_url }}"
+      dest: /usr/local/bin/docker-compose
+      checksum: sha256:{{ docker_compose_checksum.stdout }}
+      mode: 0755
+
+  - name: install version {{ docker_compose_version }} bash completion
+    get_url:
+      url: "{{ docker_compose_bash_completion_url }}"
+      dest: /etc/bash_completion.d/docker-compose
+      force: yes
+      mode: 0644
+  become: true
