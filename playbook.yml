@@ -11,6 +11,7 @@
     - { role: direnv, tags: [devtools, never] }
     - { role: docker, tags: [devtools, never] }
     - { role: docker-compose, tags: [devtools, never] }
+    - { role: fzf, tags: [devtools, never] }
     - { role: git, tags: [devtools, never] }
     - { role: htop, tags: [devtools, never] }
     - { role: jq, tags: [devtools, never] }

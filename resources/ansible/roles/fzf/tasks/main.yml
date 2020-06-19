@@ -1,0 +1,11 @@
+---
+- block:
+  - name: checkout src
+    git: repo="{{ fzf_repo_url }}" dest="{{ fzf_src_dir }}" version="{{ fzf_version }}"
+
+  - name: install
+    unarchive: src="{{ fzf_tarball_bin_url }}" dest="{{ fzf_bin_dir }}" remote_src=yes
+
+  - name: hook to bash
+    template: src=fzf.sh dest="{{ fzf_bash_hook_dir }}" mode=0644
+  become: yes

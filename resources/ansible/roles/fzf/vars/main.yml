@@ -1,0 +1,9 @@
+---
+fzf_install_prefix: /opt/fzf
+fzf_bin_dir: "{{ fzf_install_prefix }}"
+fzf_src_dir: "{{ fzf_install_prefix }}/src"
+fzf_repo_url: https://github.com/junegunn/fzf.git
+fzf_architecture: "{{ (ansible_userspace_architecture == 'x86_64') | ternary('amd64', '386') }}"
+fzf_os_system: "{{ ansible_system | lower }}"
+fzf_tarball_bin_url: "https://github.com/junegunn/fzf-bin/releases/download/{{ fzf_version }}/fzf-{{ fzf_version }}-{{ fzf_os_system }}_{{ fzf_architecture }}.tgz"
+fzf_bash_hook_dir: /etc/profile.d
