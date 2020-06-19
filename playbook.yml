@@ -15,6 +15,7 @@
     - { role: git, when: devtools }
     - { role: htop, when: devtools }
     - { role: jq, when: devtools }
+    - { role: mc, when: devtools }
     - { role: nano, when: devtools }
     - { role: nodejs, when: devtools }
     - { role: tmux, when: devtools }
