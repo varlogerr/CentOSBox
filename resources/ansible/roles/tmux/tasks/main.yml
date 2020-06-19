@@ -57,7 +57,5 @@
     create: yes
   with_items:
     - .tmux.conf.plugins
-
-- name: install plugins
-  command: "bash -lc '{{ tmux_tpm_install_dir }}/scripts/install_plugins.sh'"
-  changed_when: no
+  notify:
+    - tmux install plugins

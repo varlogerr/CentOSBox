@@ -1,0 +1,4 @@
+---
+- name: tmux install plugins
+  command: "bash -lc '{{ tmux_tpm_install_dir }}/scripts/install_plugins.sh'"
+  changed_when: no
