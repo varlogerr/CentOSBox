@@ -5,12 +5,12 @@
     args:
       creates: "{{ asdf_dir }}/plugins/direnv"
 
-  - name: install version {{ direnv_version }}
+  - name: install :{{ direnv_version }}
     command: "bash -lc 'asdf install direnv {{ direnv_version }}'"
     args:
       creates: "{{ asdf_dir }}/installs/direnv/{{ direnv_version }}"
 
-  - name: hook to bash and set version {{ direnv_version }} global
+  - name: hook to bash and set :{{ direnv_version }} global
     template: src=direnv.sh dest="{{ direnv_bash_hook_dir }}"
   become: yes
   become_user: root

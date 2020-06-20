@@ -3,10 +3,10 @@
   - name: create volume
     docker_volume: name="{{ redis_volume_name }}" state=present
 
-  - name: start container
+  - name: start :{{ redis_version }}
     docker_container:
       name: redis
-      image: redis:6-alpine
+      image: redis:{{ redis_version }}-alpine
       volumes:
         - "{{ redis_volume_name }}:/data"
       ports:

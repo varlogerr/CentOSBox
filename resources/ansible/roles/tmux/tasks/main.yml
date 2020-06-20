@@ -15,12 +15,12 @@
     args:
       creates: "{{ asdf_dir }}/plugins/tmux"
 
-  - name: install version {{ tmux_version }}
+  - name: install :{{ tmux_version }}
     command: "bash -lc 'asdf install tmux {{ tmux_version }}'"
     args:
       creates: "{{ asdf_dir }}/installs/tmux/{{ tmux_version }}"
 
-  - name: set version {{ tmux_version }} global
+  - name: set :{{ tmux_version }} global
     template: src=tmux.sh dest="{{ tmux_bash_hook_dir }}"
 
   - name: install completion

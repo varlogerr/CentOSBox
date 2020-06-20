@@ -7,6 +7,6 @@
 
 - name: source autosource in bashrc
   lineinfile:
-    path: "{{ ansible_env.HOME }}/.bashrc"
+    path: "{{ ansible_user_dir }}/.bashrc"
     state: present
     line: "[[ -f '{{ bash_source_dir_path }}/.bashinit' ]] && source '{{ bash_source_dir_path }}/.bashinit'"

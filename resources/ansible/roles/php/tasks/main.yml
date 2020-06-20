@@ -1,6 +1,9 @@
 ---
-- name: install php with extensions
-  yum: name="{{ packages }}" state=present enablerepo=remi-php74
+- set_fact:
+    php_remi_version: "{{ php_version | regex_replace('\\.') }}"
+
+- name: install :{{ php_version }} with extensions
+  yum: name="{{ packages }}" state=present enablerepo=remi-php{{ php_remi_version }}
   notify:
     - restart apache
   vars:

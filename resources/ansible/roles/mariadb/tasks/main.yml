@@ -9,10 +9,10 @@
   - name: create volume
     docker_volume: name="{{ mariadb_volume_name }}" state=present
 
-  - name: start container
+  - name: start :{{ mariadb_version }}
     docker_container:
       name: mariadb
-      image: mariadb:10.4
+      image: mariadb:{{ mariadb_version }}
       env:
         MYSQL_ROOT_PASSWORD: "{{ mariadb_root_pass | string }}"
       volumes:
