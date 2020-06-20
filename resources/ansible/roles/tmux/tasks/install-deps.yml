@@ -1,0 +1,12 @@
+---
+- block:
+  - name: install build dependencies
+    yum: name="@Development tools" state=present
+
+  - name: install runtime dependencies
+    yum: name="{{ packages }}" state=present
+    vars:
+      packages:
+        - ncurses-devel
+        - libevent
+  become: yes

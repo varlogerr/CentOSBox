@@ -1,9 +1,15 @@
 ---
-mariadb_version: 10.4
-php_version: 7.4
-redis_version: 6
+# see available tags: https://hub.docker.com/_/mariadb
+mariadb_version: "10.4"
+php_version: "7.4"
+# see available tags: https://hub.docker.com/_/redis
+redis_version: "6"
 
-asdf_version: v0.7.8
-direnv_version: 2.21.3
-nodejs_version: 12.18.1
-tmux_version: 3.1b
+# see available releases: https://github.com/asdf-vm/asdf/releases
+asdf_version: "0.7.8"
+# see available releases: https://github.com/direnv/direnv/releases
+direnv_version: "2.21.3"
+# see available releases: https://github.com/nodejs/node/releases
+nodejs_version: "12.18.1"
+# see available releases: https://github.com/tmux/tmux/releases
+tmux_version: "3.1b"

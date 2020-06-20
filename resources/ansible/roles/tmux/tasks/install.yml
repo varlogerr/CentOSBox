@@ -1,0 +1,16 @@
+---
+- block:
+  - name: install plugin
+    command: "bash -lc 'asdf plugin-add tmux'"
+    args:
+      creates: "{{ asdf_dir }}/plugins/tmux"
+
+  - name: install :{{ tmux_version }}
+    command: "bash -lc 'asdf install tmux {{ tmux_version }}'"
+    args:
+      creates: "{{ asdf_dir }}/installs/tmux/{{ tmux_version }}"
+
+  - name: set :{{ tmux_version }} global
+    template: src=tmux.sh dest="{{ tmux_bash_hook_dir }}"
+  become: yes
+  become_user: root

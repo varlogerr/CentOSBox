@@ -1,10 +1,13 @@
 ---
+- set_fact:
+    asdf_git_version: "v{{ asdf_version }}"
+
 - block:
-  - name: install :{{ asdf_version }}
+  - name: install :{{ asdf_git_version }}
     git:
       repo: "{{ asdf_git_repo_url }}"
       dest: "{{ asdf_dir }}"
-      version: "{{ asdf_version }}"
+      version: "{{ asdf_git_version }}"
 
   - name: configure bashrc
     template: src=asdf.sh dest="{{ asdf_bashrc_hook_dir }}/000-asdf.sh"

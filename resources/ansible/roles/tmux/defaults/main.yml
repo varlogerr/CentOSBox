@@ -1,2 +1,3 @@
 ---
-tmux_version: 3.1b
+# see available releases: https://github.com/tmux/tmux/releases
+tmux_version: "3.1b"
