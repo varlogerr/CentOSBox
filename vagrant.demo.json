@@ -2,5 +2,5 @@
   "memory": 2048,
   "cpus": 2,
   "ip": "192.168.69.69",
-  "devtools": true
+  "tags": "devtools"
 }

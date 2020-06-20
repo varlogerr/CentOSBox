@@ -1,24 +1,22 @@
 ---
 - hosts: localhost
-  vars:
-    devtools: "{{ ansible_env.PLAYBOOK_DEVTOOLS | bool }}"
   roles:
-    - { role: apache }
-    - { role: mariadb }
-    - { role: php }
-    - { role: redis }
-    - { role: asdf, when: devtools }
-    - { role: bash-completion, when: devtools }
-    - { role: bash-source-dir, when: devtools }
-    - { role: direnv, when: devtools }
-    - { role: docker, when: devtools }
-    - { role: docker-compose, when: devtools }
-    - { role: git, when: devtools }
-    - { role: htop, when: devtools }
-    - { role: jq, when: devtools }
-    - { role: mc, when: devtools }
-    - { role: nano, when: devtools }
-    - { role: nodejs, when: devtools }
-    - { role: tmux, when: devtools }
-    - { role: tree, when: devtools }
-    - { role: vim, when: devtools }
+    - { role: apache, tags: [always] }
+    - { role: mariadb, tags: [always] }
+    - { role: php, tags: [always] }
+    - { role: redis, tags: [always] }
+    - { role: asdf, tags: [devtools, never] }
+    - { role: bash-completion, tags: [devtools, never] }
+    - { role: bash-source-dir, tags: [devtools, never] }
+    - { role: direnv, tags: [devtools, never] }
+    - { role: docker, tags: [devtools, never] }
+    - { role: docker-compose, tags: [devtools, never] }
+    - { role: git, tags: [devtools, never] }
+    - { role: htop, tags: [devtools, never] }
+    - { role: jq, tags: [devtools, never] }
+    - { role: mc, tags: [devtools, never] }
+    - { role: nano, tags: [devtools, never] }
+    - { role: nodejs, tags: [devtools, never] }
+    - { role: tmux, tags: [devtools, never] }
+    - { role: tree, tags: [devtools, never] }
+    - { role: vim, tags: [devtools, never] }
