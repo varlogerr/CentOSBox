@@ -12,12 +12,15 @@
     args:
       creates: "{{ asdf_dir }}/plugins/nodejs"
 
-  - name: "install :{{ nodejs_version }}"
+  - name: install :{{ nodejs_version }}
     command: "bash -lc 'NODEJS_CHECK_SIGNATURES=no asdf install nodejs {{ nodejs_version }}'"
     args:
       creates: "{{ asdf_dir }}/installs/nodejs/{{ nodejs_version }}"
 
-  - name: "set :{{ nodejs_version }} global"
+  - name: create prefix directory
+    file: path="{{ nodejs_npm_prefix }}" state=directory
+
+  - name: set :{{ nodejs_version }} global
     template: src=nodejs.sh dest="{{ nodejs_bash_hook_dir }}"
   become: yes
   become_user: root
