@@ -1,0 +1,16 @@
+---
+- block:
+  - name: install
+    snap: name=microk8s state=present classic=yes
+
+  - name: add user to group
+    user: name="{{ ansible_env.LOGNAME }}" groups=microk8s append=yes
+
+  - name: create kubectl bash completion
+    command: "bash -lc 'microk8s.kubectl completion bash > {{ kubctl_completion_path }}'"
+    args:
+      creates: "{{ kubctl_completion_path }}"
+
+  - name: create aliases
+    copy: src=microk8s.sh dest=/etc/profile.d mode=0644
+  become: yes

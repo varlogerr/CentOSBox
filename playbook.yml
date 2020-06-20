@@ -15,6 +15,7 @@
     - { role: htop, tags: [devtools, never] }
     - { role: jq, tags: [devtools, never] }
     - { role: mc, tags: [devtools, never] }
+    - { role: microk8s, tags: [devtools, never] }
     - { role: nano, tags: [devtools, never] }
     - { role: nodejs, tags: [devtools, never] }
     - { role: tmux, tags: [devtools, never] }

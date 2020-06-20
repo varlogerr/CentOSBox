@@ -5,4 +5,8 @@
 
   - name: start socket
     service: name=snapd.socket state=started enabled=yes
+
+  - name: symlink /snap to /var/lib/snapd/snap
+    file: src=/var/lib/snapd/snap dest=/snap state=link
+    when: ansible_distribution == "CentOS"
   become: yes
