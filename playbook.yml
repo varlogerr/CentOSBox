@@ -1,24 +1,24 @@
 ---
 - hosts: localhost
   roles:
-    - { role: apache, tags: [always] }
-    - { role: mariadb, tags: [always] }
-    - { role: php, tags: [always] }
-    - { role: redis, tags: [always] }
-    - { role: asdf, tags: [devtools, never] }
-    - { role: bash-completion, tags: [devtools, never] }
-    - { role: bash-source-dir, tags: [devtools, never] }
-    - { role: direnv, tags: [devtools, never] }
-    - { role: docker, tags: [devtools, never] }
-    - { role: docker-compose, tags: [devtools, never] }
-    - { role: fzf, tags: [devtools, never] }
-    - { role: git, tags: [devtools, never] }
-    - { role: htop, tags: [devtools, never] }
-    - { role: jq, tags: [devtools, never] }
-    - { role: mc, tags: [devtools, never] }
-    - { role: microk8s, tags: [devtools, never] }
-    - { role: nano, tags: [devtools, never] }
-    - { role: nodejs, tags: [devtools, never] }
-    - { role: tmux, tags: [devtools, never] }
-    - { role: tree, tags: [devtools, never] }
-    - { role: vim, tags: [devtools, never] }
+    - { role: apache,           tags: [always] }
+    - { role: mariadb,          tags: [always] }
+    - { role: php,              tags: [always] }
+    - { role: redis,            tags: [always] }
+    - { role: asdf,             tags: [devtools, never] }
+    - { role: bash-completion,  tags: [devtools, never] }
+    - { role: bash-source-dir,  tags: [devtools, never] }
+    - { role: direnv,           tags: [devtools, never] }
+    - { role: docker,           tags: [docker, never] }
+    - { role: docker-compose,   tags: [docker, never] }
+    - { role: fzf,              tags: [devtools, never] }
+    - { role: git,              tags: [devtools, never] }
+    - { role: htop,             tags: [devtools, never] }
+    - { role: jq,               tags: [devtools, never] }
+    - { role: mc,               tags: [devtools, never] }
+    - { role: microk8s,         tags: [k8s, never] }
+    - { role: nano,             tags: [devtools, never] }
+    - { role: nodejs,           tags: [devtools, never] }
+    - { role: tmux,             tags: [devtools, never] }
+    - { role: tree,             tags: [devtools, never] }
+    - { role: vim,              tags: [devtools, never] }
