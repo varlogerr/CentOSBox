@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
       "/vagrant",
       mount_options: ["dmode=0775", "fmode=0664"]
 
-    # conf.vm.provision "shell", privileged: true, path: "resources/ansible.sh"
+    conf.vm.provision "shell", privileged: true, path: "resources/ansible.sh"
     conf.vm.provision "shell", privileged: false, args: ["#{ vm_conf["tags"] }"], inline: <<-SHELL
       cd /vagrant
       ansible-playbook playbook.yml --tags "${1}"
